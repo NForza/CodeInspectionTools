@@ -2,6 +2,8 @@
 using Inspector.IfSQ;
 using System;
 using System.Linq;
+using Inspector.CodeMetrics.Scores;
+using System.Collections.Generic;
 
 namespace Inspector
 {
@@ -9,33 +11,33 @@ namespace Inspector
     {
         static void Main(string[] args)
         {
-            var solution = new Solution(args.First());
+            Solution solution = new Solution(args.First());
 
-            var sourceAnalyzer = new SourceFileAnalyzer();
-            AddCodeAnalyzers(sourceAnalyzer);
+            SourceFileAnalyzer sourceAnalyzer = GetCodeAnalyzers();
 
-            var sourceFilesWithCodeMetrics = sourceAnalyzer.AppendCodeMetrics(solution.SourceFiles);
-            var ifsqScores = sourceFilesWithCodeMetrics.Select(sf => new Level2Score(sf));
+            IEnumerable<CodeMetricScore> codeMetrics = sourceAnalyzer.CalculateCodeMetrics(solution.SourceFiles);
+            IEnumerable<Level2Score> ifsqScores = solution.SourceFiles.Select(sf => new Level2Score(sf, codeMetrics));
 
             PrintDetails(ifsqScores);
-            PrintTotal(sourceFilesWithCodeMetrics, ifsqScores);
+            PrintTotal(solution.SourceFiles, ifsqScores);
         }
 
-        private static void PrintDetails(System.Collections.Generic.IEnumerable<Level2Score> ifsqScores)
+        private static void PrintDetails(IEnumerable<Level2Score> ifsqScores)
         {
             Console.WriteLine(Level2Score.HeaderString());
             ifsqScores.OrderByDescending(s => s.Rating).ToList().ForEach(s => Console.WriteLine(s));
         }
 
-        private static void PrintTotal(System.Collections.Generic.IEnumerable<SourceFile> sourceFilesWithCodeMetrics, System.Collections.Generic.IEnumerable<Level2Score> ifsqScores)
+        private static void PrintTotal(IEnumerable<SourceFile> sourceFilesWithCodeMetrics, IEnumerable<Level2Score> ifsqScores)
         {
             int totalLines = sourceFilesWithCodeMetrics.Sum(sf => sf.LinesOfCode);
             var total = new Level2Score(totalLines, ifsqScores);
             Console.WriteLine(total);
         }
 
-        private static void AddCodeAnalyzers(SourceFileAnalyzer sourceAnalyzer)
+        private static SourceFileAnalyzer GetCodeAnalyzers()
         {
+            var sourceAnalyzer = new SourceFileAnalyzer();
             //SP-1
             sourceAnalyzer.AddAnalyzer(new CodeMetrics.CSharp.MethodLength());
             sourceAnalyzer.AddAnalyzer(new CodeMetrics.VisualBasic.MethodLength());
@@ -68,7 +70,7 @@ namespace Inspector
             sourceAnalyzer.AddAnalyzer(new CodeMetrics.CSharp.MagicString());
             sourceAnalyzer.AddAnalyzer(new CodeMetrics.VisualBasic.MagicString());
 
-
+            return sourceAnalyzer;
         }
     }
 }

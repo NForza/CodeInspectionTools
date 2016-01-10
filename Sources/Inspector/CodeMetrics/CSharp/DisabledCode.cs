@@ -10,7 +10,7 @@ namespace Inspector.CodeMetrics.CSharp
 {
     public class DisabledCode : CSharpAnalyzer
     {
-        public override IEnumerable<CodeScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
         {
             return GetMethods(node).ToList().Select(m => {
                 int score = CalculateScore(m);

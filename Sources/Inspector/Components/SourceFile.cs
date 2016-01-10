@@ -21,7 +21,6 @@ namespace Inspector.Components
             FileName = srcFile;
             Code = code;
             LinesOfCode = Code.Split('\n').Count();
-            CodeScores = new List<CodeScore>();
         }
 
         public int LinesOfCode
@@ -32,8 +31,6 @@ namespace Inspector.Components
         public Project Project { get; private set; }
         public string FileName { get; private set; }
         public string Language { get; private set; }
-
-        public IEnumerable<CodeScore> CodeScores { get; private set; }
 
         public string Code { get; private set; }
 
@@ -51,11 +48,11 @@ namespace Inspector.Components
             return sourceFileRootNode;
         }
 
-        public void CalculateMetricsWith(ICollection<ICodeMetricAnalyzer> analyzers)
+        public IEnumerable<CodeMetricScore> CalculateMetricsWith(ICollection<ICodeMetricAnalyzer> analyzers)
         {
             var syntax = GetSyntaxNodeFromCode();
             Language = syntax.Language;
-            CodeScores = analyzers.SelectMany(a => a.GetMetrics(syntax)).ToList();
+            return analyzers.SelectMany(a => a.GetMetrics(syntax)).ToList();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Inspector.CodeMetrics.Scores
 {
-    public class CodeScore
+    public class CodeMetricScore
     {
         public string ClassName { get; internal set; }
         public int Score { get; internal set; }

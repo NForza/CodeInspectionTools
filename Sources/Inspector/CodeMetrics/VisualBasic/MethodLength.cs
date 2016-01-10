@@ -12,7 +12,7 @@ namespace Inspector.CodeMetrics.VisualBasic
     /// </summary>
     public class MethodLength : VisualBasicAnalyzer
     {
-        public override IEnumerable<CodeScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
         {
             return node.DescendantNodes().OfType<MethodBlockSyntax>().Select(item =>
             {

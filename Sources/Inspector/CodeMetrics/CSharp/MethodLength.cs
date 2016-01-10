@@ -8,7 +8,7 @@ namespace Inspector.CodeMetrics.CSharp
 {
     public class MethodLength : CSharpAnalyzer
     {
-        public override IEnumerable<CodeScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
         {
             return GetMethods(node).Select(item =>
             {

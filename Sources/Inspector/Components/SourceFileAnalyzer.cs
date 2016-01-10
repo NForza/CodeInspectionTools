@@ -1,4 +1,5 @@
 ﻿using Inspector.CodeMetrics;
+using Inspector.CodeMetrics.Scores;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,20 +9,14 @@ namespace Inspector.Components
     {
         private readonly ICollection<ICodeMetricAnalyzer> analyzers = new List<ICodeMetricAnalyzer>();
 
-        public SourceFileAnalyzer()
-        {
-        }
-
         public void AddAnalyzer(ICodeMetricAnalyzer analyzer)
         {
             analyzers.Add(analyzer);
         }
 
-        public IEnumerable<SourceFile> AppendCodeMetrics(IEnumerable<SourceFile> sourceFiles)
+        public IEnumerable<CodeMetricScore> CalculateCodeMetrics(IEnumerable<SourceFile> sourceFiles)
         {
-            var analyzedFiles = sourceFiles.ToList();
-            analyzedFiles.ForEach(sf => sf.CalculateMetricsWith(analyzers));
-            return analyzedFiles;
-        }
+            return sourceFiles.SelectMany(sf => sf.CalculateMetricsWith(analyzers));
+        }                                                 
     }
 }

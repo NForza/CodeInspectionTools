@@ -10,7 +10,7 @@ namespace Inspector.CodeMetrics.VisualBasic
 {
     public class DisabledCode : VisualBasicAnalyzer
     {
-        public override IEnumerable<CodeScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
         {
             return GetMethods(node).ToList().Select(m => {
                 int score = CalculateScore(m);

@@ -1,6 +1,6 @@
 ﻿namespace Inspector.CodeMetrics.Scores
 {
-    public class MethodScore: CodeScore
+    public class MethodScore: CodeMetricScore
     {
         public string Method { get; internal set; }
 

@@ -12,7 +12,7 @@ namespace Inspector.CodeMetrics.CSharp
     /// </summary>
     public class ControlFlowComplexity : CSharpAnalyzer
     {
-        public override IEnumerable<CodeScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
         {
             return GetMethods(node).Select(m => CreateScore<ControlFlowComplexityScore>(m, GetScore(m)));
         }

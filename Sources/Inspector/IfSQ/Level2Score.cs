@@ -11,20 +11,20 @@ namespace Inspector.IfSQ
         private const int Sp2ScoreTreshold = 4;
         private const int Sp3ScoreTreshold = 10;
 
-        public Level2Score(SourceFile sf)
+        public Level2Score(SourceFile sourceFile, IEnumerable<CodeMetricScore> metrics)
         {
-            Project = sf.Project.Name;
-            File = sf.FileName;
-            Loc = sf.LinesOfCode;
+            Project = sourceFile.Project.Name;
+            File = sourceFile.FileName;
+            Loc = sourceFile.LinesOfCode;
 
-            Spm1 = sf.CodeScores.OfType<MagicNumberScore>().Sum(ms => ms.Score);
-            Spm2 = sf.CodeScores.OfType<MagicStringScore>().Sum(ms => ms.Score);
-            Wip1 = sf.CodeScores.OfType<VagueToDoScore>().Sum(ms => ms.Score);
-            Wip2 = sf.CodeScores.OfType<DisabledScore>().Sum(ms => ms.Score);
-            Wip3 = sf.CodeScores.OfType<EmptyStatementBlockScore>().Sum(ms => ms.Score);
-            Sp1 = sf.CodeScores.OfType<MethodLengthScore>().Where(ms => ms.Score > Sp1ScoreTreshold).Sum(ms => ms.Score - Sp1ScoreTreshold);
-            Sp2 = sf.CodeScores.OfType<NestingLevelScore>().Where(ms => ms.Score > Sp2ScoreTreshold).Sum(ms => ms.LineCountPerLevel[Sp2ScoreTreshold + 1]);
-            Sp3 = sf.CodeScores.OfType<ControlFlowComplexityScore>().Where(ms => ms.Score > Sp3ScoreTreshold).Sum(ms => ms.Score - Sp3ScoreTreshold);
+            Spm1 = metrics.OfType<MagicNumberScore>().Sum(ms => ms.Score);
+            Spm2 = metrics.OfType<MagicStringScore>().Sum(ms => ms.Score);
+            Wip1 = metrics.OfType<VagueToDoScore>().Sum(ms => ms.Score);
+            Wip2 = metrics.OfType<DisabledScore>().Sum(ms => ms.Score);
+            Wip3 = metrics.OfType<EmptyStatementBlockScore>().Sum(ms => ms.Score);
+            Sp1 = metrics.OfType<MethodLengthScore>().Where(ms => ms.Score > Sp1ScoreTreshold).Sum(ms => ms.Score - Sp1ScoreTreshold);
+            Sp2 = metrics.OfType<NestingLevelScore>().Where(ms => ms.Score > Sp2ScoreTreshold).Sum(ms => ms.LineCountPerLevel[Sp2ScoreTreshold + 1]);
+            Sp3 = metrics.OfType<ControlFlowComplexityScore>().Where(ms => ms.Score > Sp3ScoreTreshold).Sum(ms => ms.Score - Sp3ScoreTreshold);
         }
 
         public Level2Score(int totalLines, IEnumerable<Level2Score> scores)

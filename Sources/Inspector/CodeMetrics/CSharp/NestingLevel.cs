@@ -9,7 +9,7 @@ namespace Inspector.CodeMetrics.CSharp
 {
     public class NestingLevel : CSharpAnalyzer
     {
-        public override IEnumerable<CodeScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
         {
             return GetMethods(node).ToList().Select(m =>
             {

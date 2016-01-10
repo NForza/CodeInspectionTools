@@ -120,7 +120,7 @@
     <Compile Include="CodeMetrics\Scores\MethodScore.cs" />
     <Compile Include="CodeMetrics\Scores\NestingLevelScore.cs" />
     <Compile Include="CodeMetrics\Scores\DisabledCodeScore.cs" />
-    <Compile Include="CodeMetrics\Scores\Score.cs" />
+    <Compile Include="CodeMetrics\Scores\CodeMetricScore.cs" />
     <Compile Include="CodeMetrics\Scores\VagueToDoScore.cs" />
     <Compile Include="CodeMetrics\VisualBasic\CommentLocator.cs" />
     <Compile Include="CodeMetrics\ICodeAnalyzer.cs" />
