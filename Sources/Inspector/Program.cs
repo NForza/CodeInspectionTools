@@ -18,6 +18,7 @@ namespace Inspector
             if (!args.Any())
             {
                 Console.WriteLine($"Usage: {AppDomain.CurrentDomain.FriendlyName} solution.sln");
+                Console.ReadLine();
                 return;
             }
 
