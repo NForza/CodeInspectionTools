@@ -10,11 +10,11 @@ namespace Inspector.CodeMetrics.VisualBasic
 {
     public class DisabledCode : VisualBasicAnalyzer
     {
-        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node, string project)
         {
             return GetMethods(node).ToList().Select(m => {
                 int score = CalculateScore(m);
-                return CreateScore<DisabledScore>(m, score);
+                return CreateScore<DisabledScore>(m, score, project);
             });          
         }
 

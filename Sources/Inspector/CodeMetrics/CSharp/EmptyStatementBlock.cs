@@ -9,12 +9,12 @@ namespace Inspector.CodeMetrics.CSharp
 {
     public class EmptyStatementBlock : CSharpAnalyzer
     {
-        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node, string project)
         {
             return GetMethods(node).Select(m =>
             {
                 int score = CalculateScore(m);
-                return CreateScore<EmptyStatementBlockScore>(m, score);
+                return CreateScore<EmptyStatementBlockScore>(m, score, project);
             });
         }
 

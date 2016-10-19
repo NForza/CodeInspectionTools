@@ -12,7 +12,7 @@ namespace Inspector.CodeMetrics.VisualBasic
     /// </summary>
     public class MethodLength : VisualBasicAnalyzer
     {
-        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node, string project)
         {
             return node.DescendantNodes().OfType<MethodBlockSyntax>().Select(item =>
             {
@@ -24,7 +24,7 @@ namespace Inspector.CodeMetrics.VisualBasic
                 var totalLength = lines.Length;
                 var emptyLines = lines.Where(l => string.IsNullOrWhiteSpace(l)).Count();
                 var linesStartingWithComment = lines.Where(l => l.Trim().StartsWith("'")).Count();
-                return CreateScore<MethodLengthScore>(item, totalLength-emptyLines-linesStartingWithComment);
+                return CreateScore<MethodLengthScore>(item, totalLength-emptyLines-linesStartingWithComment, project);
             });
         }
     }

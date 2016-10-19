@@ -8,12 +8,13 @@ namespace Inspector.CodeMetrics.VisualBasic
 {
     public abstract class VisualBasicAnalyzer : ICodeMetricAnalyzer
     {
-        public abstract IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node);
+        public abstract IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node, string project);
 
-        protected T CreateScore<T>(MethodBlockSyntax m, int score) where T: MethodScore, new()
+        protected T CreateScore<T>(MethodBlockSyntax m, int score, string project) where T: MethodScore, new()
         {
             return new T()
             {
+                Project = project,
                 ClassName = GetClassName(m),
                 Method = GetMethodName(m),
                 Score = score

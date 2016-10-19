@@ -10,11 +10,11 @@ namespace Inspector.CodeMetrics.CSharp
 {
     public class VagueToDo : CSharpAnalyzer
     {
-        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node, string project)
         {
             return GetMethods(node).ToList().Select(m => {
                 int score = CalculateScore(m);
-                return CreateScore<VagueToDoScore>(m, score);
+                return CreateScore<VagueToDoScore>(m, score, project);
             });          
         }
 

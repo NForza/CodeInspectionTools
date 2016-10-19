@@ -8,12 +8,12 @@ namespace Inspector.CodeMetrics.VisualBasic
 {
     public class EmptyStatementBlock : VisualBasicAnalyzer
     {
-        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node, string project)
         {
             return GetMethods(node).Select(m =>
             {
                 int score = CalculateScore(m);
-                return CreateScore<EmptyStatementBlockScore>(m, score);
+                return CreateScore<EmptyStatementBlockScore>(m, score, project);
             });
         }
 

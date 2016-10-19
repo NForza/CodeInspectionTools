@@ -52,7 +52,7 @@ namespace Inspector.Components
         {
             var syntax = GetSyntaxNodeFromCode();
             Language = syntax.Language;
-            return analyzers.SelectMany(a => a.GetMetrics(syntax)).ToList();
+            return analyzers.SelectMany(a => a.GetMetrics(syntax, Project.Name)).ToList();
         }
     }
 }

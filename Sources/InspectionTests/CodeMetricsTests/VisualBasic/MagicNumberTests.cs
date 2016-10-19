@@ -29,7 +29,7 @@ namespace InspectionTests.CodeMetricsTests.VisualBasic
                 ");
 
             var sut = new MagicNumber();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("Function TestMe(i as Integer)");
@@ -55,7 +55,7 @@ namespace InspectionTests.CodeMetricsTests.VisualBasic
                 ");
 
             var sut = new MagicNumber();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("Function TestMe(i as Integer)");
@@ -81,7 +81,7 @@ namespace InspectionTests.CodeMetricsTests.VisualBasic
                 ");
 
             var sut = new MagicNumber();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("Function TestMe(i as Integer)");
@@ -108,7 +108,7 @@ namespace InspectionTests.CodeMetricsTests.VisualBasic
                 ");
 
             var sut = new MagicNumber();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("Function TestMe(i as Integer)");
@@ -139,7 +139,7 @@ namespace InspectionTests.CodeMetricsTests.VisualBasic
                 ");
 
             var sut = new MagicNumber();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("Function TestMe(i as Integer)");

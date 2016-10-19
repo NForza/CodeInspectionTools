@@ -10,10 +10,10 @@ namespace Inspector.CodeMetrics.VisualBasic
 {
     public class VagueToDo : VisualBasicAnalyzer
     {
-        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node, string project)
         {
             return GetMethods(node)
-                .Select(m => CreateScore<VagueToDoScore>(m, CalculateScore(m)));          
+                .Select(m => CreateScore<VagueToDoScore>(m, CalculateScore(m), project));          
         }
 
         private int CalculateScore(MethodBlockSyntax m)

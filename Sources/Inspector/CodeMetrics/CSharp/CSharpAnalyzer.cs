@@ -8,11 +8,12 @@ namespace Inspector.CodeMetrics.CSharp
 {
     public abstract class CSharpAnalyzer : ICodeMetricAnalyzer
     {
-        public abstract IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node);
+        public abstract IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node, string project);
 
-        protected T CreateScore<T>(BaseMethodDeclarationSyntax m, int score) where T : MethodScore, new()
+        protected T CreateScore<T>(BaseMethodDeclarationSyntax m, int score, string project) where T : MethodScore, new()
         {
             T result = new T();
+            result.Project = project;
             result.ClassName = GetClassName(m);
             result.Method = GetMethodName(m);
             result.Score = score;

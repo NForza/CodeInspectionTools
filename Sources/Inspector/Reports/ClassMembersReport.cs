@@ -17,14 +17,38 @@ namespace Inspector.Reports
             writer.WriteLine($"  Highest number of members: {scores.Max(cms => cms.MemberCount)}");
             writer.WriteLine($"  Average number of members: {scores.Average(cms => cms.MemberCount):N2}");
             writer.WriteLine($"  Standard deviation of members: {scores.Select(cms => cms.MemberCount).StdDev():N2}");
+            writer.WriteLine();
 
+            PrintTop10LargestMethods(writer, scores);
+            PrintTop10LargestMethodsPerProject(writer, scores);
+        }
+
+        private void PrintTop10LargestMethodsPerProject(StreamWriter writer, List<ClassScore> scores)
+        {
+            IEnumerable<IGrouping<string, ClassScore>> classScoresPerProject = scores.GroupBy(cls => cls.Project);
+
+            foreach (var projectClassScores in classScoresPerProject)
+            {
+                writer.WriteLine($"Top 10 Largest classes for: {projectClassScores.Key}");
+                var largestClassesForCurrentProject =
+                    projectClassScores.OrderByDescending(cls => cls.TotalLineCount).Take(10);
+                foreach(var largeMethodPerProject in largestClassesForCurrentProject)
+                    writer.WriteLine($"  {largeMethodPerProject.Classname} - {largeMethodPerProject.TotalLineCount}");
+                writer.WriteLine();
+            }
+            writer.WriteLine();
+        }
+
+        private static void PrintTop10LargestMethods(StreamWriter writer, List<ClassScore> scores)
+        {
             var top10LargestClasses = scores.OrderByDescending(cls => cls.TotalLineCount).Take(10);
 
             writer.WriteLine("Top 10 Largest classes:");
             foreach (var largeClass in top10LargestClasses)
             {
-                writer.WriteLine( $"  {largeClass.Classname} - {largeClass.TotalLineCount}");
+                writer.WriteLine($"  {largeClass.Project}.{largeClass.Classname} - {largeClass.TotalLineCount}");
             }
+            writer.WriteLine();
         }
     }
 }

@@ -6,6 +6,6 @@ namespace Inspector.CodeMetrics
 {
     public interface ICodeMetricAnalyzer
     {
-        IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node);
+        IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node, string project);
     }
 }

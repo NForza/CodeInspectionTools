@@ -26,7 +26,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -52,7 +52,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -79,7 +79,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -108,7 +108,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -137,7 +137,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -170,7 +170,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -198,7 +198,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -230,7 +230,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -264,7 +264,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -302,7 +302,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -339,7 +339,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -380,7 +380,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -407,7 +407,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -435,7 +435,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -463,7 +463,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -489,7 +489,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -519,7 +519,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");
@@ -546,7 +546,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new NestingLevel();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.OfType<MethodScore>().First().Method.Should().Be("bool TestMe (int i)");

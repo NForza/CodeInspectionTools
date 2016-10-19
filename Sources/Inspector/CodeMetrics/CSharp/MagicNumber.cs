@@ -10,12 +10,12 @@ namespace Inspector.CodeMetrics.CSharp
 {
     public class MagicNumber : CSharpAnalyzer
     {
-        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node, string project)
         {
             return GetMethods(node).ToList().Select(ms =>
             {
                 int score = CalculateScore(ms);
-                return CreateScore<MagicNumberScore>(ms, score);
+                return CreateScore<MagicNumberScore>(ms, score, project);
             });
         }
 

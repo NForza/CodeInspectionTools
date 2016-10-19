@@ -9,7 +9,7 @@ namespace Inspector.CodeMetrics.CSharp
 {
     public class NestingLevel : CSharpAnalyzer
     {
-        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node)
+        public override IEnumerable<CodeMetricScore> GetMetrics(SyntaxNode node, string project)
         {
             return GetMethods(node).ToList().Select(m =>
             {
@@ -17,7 +17,7 @@ namespace Inspector.CodeMetrics.CSharp
                 visitor.Visit(m);
 
                 int maxLevel = visitor.MaxLevel;
-                var score= CreateScore<NestingLevelScore>(m, maxLevel);
+                var score= CreateScore<NestingLevelScore>(m, maxLevel, project);
                 score.LineCountPerLevel = new Dictionary<int, int>(visitor.LineCountPerLevel);
                 return score;
             }

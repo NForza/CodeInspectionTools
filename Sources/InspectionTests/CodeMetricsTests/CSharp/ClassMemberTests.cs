@@ -22,7 +22,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new ClassComplexity();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.First().Score.Should().Be(0);
@@ -41,7 +41,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new ClassComplexity();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.First().Score.Should().Be(1);
@@ -61,7 +61,7 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new ClassComplexity();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.First().Score.Should().Be(1);
@@ -89,10 +89,11 @@ namespace InspectionTests.CodeMetricsTests.CSharp
                 ");
 
             var sut = new ClassComplexity();
-            var results = sut.GetMetrics(parsedNode);
+            var results = sut.GetMetrics(parsedNode, "TestProjectName");
 
             results.Should().HaveCount(1);
             results.First().Score.Should().Be(7);
+            results.First().Project.Should().Be("TestProjectName");
         }
     }
 }
