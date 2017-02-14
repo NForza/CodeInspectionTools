@@ -42,6 +42,16 @@ namespace Inspector.CodeMetrics.CSharp
                 var constructor = m as ConstructorDeclarationSyntax;
                 return $"{constructor.Identifier} {constructor.ParameterList}";
             }
+            if (m is ConversionOperatorDeclarationSyntax)
+            {
+                var conversion = m as ConversionOperatorDeclarationSyntax;
+                return $"{conversion.OperatorKeyword}{conversion.ParameterList}";
+            }
+            if ( m is OperatorDeclarationSyntax)
+            {
+                var operatodecl = m as OperatorDeclarationSyntax;
+                return $"{operatodecl.OperatorKeyword}{operatodecl.ParameterList}";
+            }
             var method = m as MethodDeclarationSyntax;
             return $"{ method.ReturnType } { method.Identifier } {method.ParameterList}";
         }
